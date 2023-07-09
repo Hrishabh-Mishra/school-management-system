@@ -1,7 +1,5 @@
 package com.onlineschool.schoolmanagementsystem.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,21 +8,19 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "Student_Table")
+@Table(name="Address_Table")
 @Data
-public class StudentEntity {
-
+public class AddressEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
-	String name;
-	String standard;
-	String section;
-	String password;
-	String feesStatus;
-	AddressEntity address;
-	String email;
-	String phone;
-	Date admissionDate;
-	Date schoolLeavingDay;
+	Long addressId;
+	Integer pincode;
+	String houseNo;//Flat Number
+	String locality;
+	String street;
+	String district;
+	String state;
+	String landmark;
+	String postOffice;
+	
 }

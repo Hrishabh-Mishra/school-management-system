@@ -11,11 +11,11 @@ import com.onlineschool.schoolmanagementsystem.dto.StaffDTO;
 import com.onlineschool.schoolmanagementsystem.entity.StaffEntity;
 import com.onlineschool.schoolmanagementsystem.repository.StaffRepository;
 import com.onlineschool.schoolmanagementsystem.repository.StudentRepository;
-import com.onlineschool.schoolmanagementsystem.service.AdminService;
-import com.onlineschool.schoolmanagementsystem.service.StaffService;
+import com.onlineschool.schoolmanagementsystem.service.AdminCommonService;
+import com.onlineschool.schoolmanagementsystem.service.AdminStaffService;
 
 @Service
-public class StaffServiceImpl implements StaffService{
+public class StaffServiceImpl implements AdminStaffService{
 
 	@Autowired
 	StaffRepository staffRepository;
@@ -36,7 +36,7 @@ public class StaffServiceImpl implements StaffService{
 		return null;
 	}
 	@Override
-	public StaffDTO fetchDetails(long dtoObject) {
+	public StaffDTO fetchDetails(Long dtoObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -67,7 +67,7 @@ public class StaffServiceImpl implements StaffService{
 	}
 
 	@Bean
-	public AdminService<StaffDTO> staffService() {
+	public AdminCommonService<StaffDTO> staffService() {
 	    return new StaffServiceImpl();
 	}
 }

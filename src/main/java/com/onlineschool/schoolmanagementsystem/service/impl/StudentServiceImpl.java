@@ -4,9 +4,11 @@ import com.onlineschool.schoolmanagementsystem.converter.StudentObjectConverter;
 import com.onlineschool.schoolmanagementsystem.dto.StudentDTO;
 import com.onlineschool.schoolmanagementsystem.entity.StudentEntity;
 import com.onlineschool.schoolmanagementsystem.repository.StudentRepository;
-import com.onlineschool.schoolmanagementsystem.service.AdminService;
-import com.onlineschool.schoolmanagementsystem.service.StudentService;
+import com.onlineschool.schoolmanagementsystem.service.AdminCommonService;
+import com.onlineschool.schoolmanagementsystem.service.AdminStudentService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StudentServiceImpl implements  StudentService{
+public class StudentServiceImpl implements  AdminStudentService{
 
 	@Autowired
 	StudentRepository studentRepository;
@@ -73,14 +75,21 @@ public class StudentServiceImpl implements  StudentService{
 	}
 
 	@Override
-	public StudentDTO fetchDetails(long dtoObject) {
-		// TODO Auto-generated method stub
-		return null;
+	public StudentDTO fetchDetails(Long studentId) {
+		Optional<StudentEntity> studentEntityOp = studentRepository.findById(studentId);
+		StudentDTO studentDTO = null;
+		if(studentEntityOp.isPresent()) {
+			studentDTO = converter.studentEntitytoDTOConverter(studentEntityOp.get());
+		}
+		return studentDTO;
 	}
-
-	@Bean
-	public AdminService<StudentDTO> studentService() {
-	    return new StudentServiceImpl();
+	@Override
+	public List<StudentDTO> fetchAllStudentDetails() {
+		List<StudentEntity> studentEntityList = (List<StudentEntity>) studentRepository.findAll();
+		List<StudentDTO> studentDTOList = new ArrayList<>();
+		for (StudentEntity studentEntity : studentEntityList) {
+			studentDTOList.add(converter.studentEntitytoDTOConverter(studentEntity));
+		}
+		return studentDTOList;
 	}
-	
 }

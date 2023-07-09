@@ -8,13 +8,15 @@ import com.onlineschool.schoolmanagementsystem.entity.StudentEntity;
 @Configuration
 public class StudentObjectConverter {
 
+	AddressConverter addressConverter;
+	
 	public StudentEntity studentDTOtoEntityConverter(StudentDTO sdto) {
 		StudentEntity se = new StudentEntity();
 		se.setName(sdto.getName());
 		se.setEmail(sdto.getEmail());
 		se.setPhone(sdto.getPhone());
 		se.setPassword(sdto.getPassword());
-		se.setAddress(sdto.getAddress());
+		se.setAddress(addressConverter.addressDTOToEntityConverter(sdto.getAddress()));
 		se.setFeesStatus(sdto.getFeesStatus());
 		se.setSchoolLeavingDay(sdto.getSchoolLeavingDay());
 		se.setSection(sdto.getSection());
