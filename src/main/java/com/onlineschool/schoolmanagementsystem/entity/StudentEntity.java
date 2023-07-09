@@ -1,5 +1,7 @@
 package com.onlineschool.schoolmanagementsystem.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +18,15 @@ public class StudentEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	String name;
+	String standard;
+	String section;
+	String password;
+	String feesStatus;
+	String address;
 	String email;
 	String phone;
-	String password;
+	Date admissionDate;
+	Date schoolLeavingDay;
+
+	
 }

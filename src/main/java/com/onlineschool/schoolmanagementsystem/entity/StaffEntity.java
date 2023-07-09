@@ -1,5 +1,7 @@
 package com.onlineschool.schoolmanagementsystem.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,4 +20,10 @@ public class StaffEntity {
 	String email;
 	String phone;
 	String password;
+	String address;
+	String salaryStatus;
+	String salaryAmount;
+	String staffType;
+	String classTeacher;
+	Date joiningDate;
 }

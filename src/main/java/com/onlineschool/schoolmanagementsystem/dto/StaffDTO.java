@@ -1,5 +1,7 @@
 package com.onlineschool.schoolmanagementsystem.dto;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -14,4 +16,10 @@ public class StaffDTO {
 	String email;
 	String phone;
 	String password;
+	String address;
+	String salaryStatus;
+	String salaryAmount;
+	String staffType;
+	String classTeacher;
+	Date joiningDate;
 }

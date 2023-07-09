@@ -13,6 +13,12 @@ public class StaffObjectConverter {
 		se.setEmail(sdto.getEmail());
 		se.setPhone(sdto.getPhone());
 		se.setPassword(sdto.getPassword());
+		se.setSalaryAmount(sdto.getSalaryAmount());
+		se.setSalaryStatus(sdto.getSalaryStatus());
+		se.setStaffType(sdto.getStaffType());
+		se.setAddress(sdto.getAddress());
+		se.setClassTeacher(sdto.getClassTeacher());
+		se.setJoiningDate(sdto.getJoiningDate());
 		return se;
 	}
 	

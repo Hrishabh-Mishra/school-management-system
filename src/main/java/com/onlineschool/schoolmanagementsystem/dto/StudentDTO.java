@@ -1,5 +1,7 @@
 package com.onlineschool.schoolmanagementsystem.dto;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -9,9 +11,15 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class StudentDTO {
-	long id;
+	Long id;	
 	String name;
+	String standard;
+	String section;
+	String password;
+	String feesStatus;
+	String address;
 	String email;
 	String phone;
-	String password;
+	Date admissionDate;
+	Date schoolLeavingDay;
 }

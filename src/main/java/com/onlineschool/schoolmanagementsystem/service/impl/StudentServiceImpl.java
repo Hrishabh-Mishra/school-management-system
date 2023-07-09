@@ -28,9 +28,14 @@ public class StudentServiceImpl implements  StudentService{
 	}
 
 	@Override
-	public StudentDTO updateFeeStatus(StudentDTO dtoObject) {
+	public StudentDTO updateFeeStatus(StudentDTO studentDTO) {
 		// TODO Auto-generated method stub
-		return null;
+		Optional<StudentEntity> studentEntityOp = studentRepository.findById(studentDTO.getId());
+		if(studentEntityOp.isPresent()) {
+			StudentEntity studentEntity = converter.studentDTOtoEntityConverter(studentDTO);
+			studentRepository.save(studentEntity);
+		}
+		return studentDTO;
 	}
 
 	@Override

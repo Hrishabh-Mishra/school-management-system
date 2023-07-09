@@ -14,6 +14,12 @@ public class StudentObjectConverter {
 		se.setEmail(sdto.getEmail());
 		se.setPhone(sdto.getPhone());
 		se.setPassword(sdto.getPassword());
+		se.setAddress(sdto.getAddress());
+		se.setFeesStatus(sdto.getFeesStatus());
+		se.setSchoolLeavingDay(sdto.getSchoolLeavingDay());
+		se.setSection(sdto.getSection());
+		se.setStandard(sdto.getStandard());
+		se.setAdmissionDate(sdto.getAdmissionDate());
 		return se;
 	}
 	

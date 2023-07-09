@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,19 @@ public class AdminController {
 		studentDTO = studentService.register(studentDTO);
 		return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
 	}
+	
+	@PatchMapping("student/updateFeesStatus")
+	public ResponseEntity<StudentDTO> updateFeesStatus(@RequestBody StudentDTO studentDTO){
+		ResponseEntity<StudentDTO> response;
+		if(studentDTO.getId()!=null && studentDTO.getFeesStatus()!=null) {
+			studentDTO = studentService.updateFeeStatus(studentDTO);
+			response = new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
+		}else {
+			response = new ResponseEntity<StudentDTO>(HttpStatus.BAD_REQUEST);
+		}
+		return response;
+	}
+		
 	
 	@PostMapping("staff/register")
 	public ResponseEntity<StaffDTO> register(@RequestBody StaffDTO staffDTO){
