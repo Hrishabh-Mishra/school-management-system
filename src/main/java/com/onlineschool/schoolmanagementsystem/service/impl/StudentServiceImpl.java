@@ -32,7 +32,8 @@ public class StudentServiceImpl implements  StudentService{
 		// TODO Auto-generated method stub
 		Optional<StudentEntity> studentEntityOp = studentRepository.findById(studentDTO.getId());
 		if(studentEntityOp.isPresent()) {
-			StudentEntity studentEntity = converter.studentDTOtoEntityConverter(studentDTO);
+			StudentEntity studentEntity = studentEntityOp.get();
+			studentEntity.setFeesStatus(studentDTO.getFeesStatus());
 			studentRepository.save(studentEntity);
 		}
 		return studentDTO;
