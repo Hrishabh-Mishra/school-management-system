@@ -1,8 +1,11 @@
 package com.onlineschool.schoolmanagementsystem.service.impl;
 
+import com.onlineschool.schoolmanagementsystem.converter.AddressConverter;
 import com.onlineschool.schoolmanagementsystem.converter.StudentObjectConverter;
 import com.onlineschool.schoolmanagementsystem.dto.StudentDTO;
+import com.onlineschool.schoolmanagementsystem.entity.AddressEntity;
 import com.onlineschool.schoolmanagementsystem.entity.StudentEntity;
+import com.onlineschool.schoolmanagementsystem.repository.AddressRepositry;
 import com.onlineschool.schoolmanagementsystem.repository.StudentRepository;
 import com.onlineschool.schoolmanagementsystem.service.AdminCommonService;
 import com.onlineschool.schoolmanagementsystem.service.AdminStudentService;
@@ -14,7 +17,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-
+import java.util.Random;
 @Service
 public class StudentServiceImpl implements  AdminStudentService{
 
@@ -22,7 +25,11 @@ public class StudentServiceImpl implements  AdminStudentService{
 	StudentRepository studentRepository;
 	@Autowired
 	StudentObjectConverter converter;
+	@Autowired
+	AddressConverter addressConverter;
 	
+	@Autowired
+	AddressRepositry addressRepositry;
 	@Override
 	public StudentDTO fetchMarksDetails(long dtoObject) {
 		// TODO Auto-generated method stub
@@ -49,7 +56,13 @@ public class StudentServiceImpl implements  AdminStudentService{
 		}
 		else {
 			StudentEntity studentEntity = converter.studentDTOtoEntityConverter(studentDTO);
+			Random random = new Random();
+			long randomAddressId = random.nextLong();
+			studentEntity.setAddressId(randomAddressId);
 			studentEntity = studentRepository.save(studentEntity);
+			AddressEntity addressEntity = addressConverter.addressDTOToEntityConverter(studentDTO.getAddress());
+			addressEntity.setAddressId(randomAddressId);
+			addressEntity = addressRepositry.save(addressEntity);
 			studentDTO = converter.studentEntitytoDTOConverter(studentEntity);
 			return studentDTO;
 		}

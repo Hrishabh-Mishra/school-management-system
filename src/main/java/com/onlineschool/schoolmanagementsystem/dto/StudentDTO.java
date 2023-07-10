@@ -18,6 +18,7 @@ public class StudentDTO {
 	String password;
 	String feesStatus;
 	AddressDTO address;
+	//String address;
 	String email;
 	String phone;
 	Date admissionDate;

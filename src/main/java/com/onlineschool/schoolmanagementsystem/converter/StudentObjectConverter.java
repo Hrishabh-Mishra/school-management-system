@@ -1,5 +1,7 @@
 package com.onlineschool.schoolmanagementsystem.converter;
 
+import java.util.Random;
+
 import org.springframework.context.annotation.Configuration;
 
 import com.onlineschool.schoolmanagementsystem.dto.StudentDTO;
@@ -16,7 +18,6 @@ public class StudentObjectConverter {
 		se.setEmail(sdto.getEmail());
 		se.setPhone(sdto.getPhone());
 		se.setPassword(sdto.getPassword());
-		se.setAddress(addressConverter.addressDTOToEntityConverter(sdto.getAddress()));
 		se.setFeesStatus(sdto.getFeesStatus());
 		se.setSchoolLeavingDay(sdto.getSchoolLeavingDay());
 		se.setSection(sdto.getSection());

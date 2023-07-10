@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 @Entity
 @Table(name = "Student_Table")
 @Data
@@ -22,7 +23,9 @@ public class StudentEntity {
 	String section;
 	String password;
 	String feesStatus;
-	AddressEntity address;
+	//AddressEntity address;
+	//String address;
+	Long addressId;
 	String email;
 	String phone;
 	Date admissionDate;

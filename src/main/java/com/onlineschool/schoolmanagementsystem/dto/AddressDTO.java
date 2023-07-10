@@ -18,4 +18,6 @@ public class AddressDTO {
 	String state;
 	String landmark;
 	String postOffice;
+	
+	
 }

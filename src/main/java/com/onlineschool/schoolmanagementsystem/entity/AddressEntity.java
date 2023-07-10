@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class AddressEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	Long addressId;
 	Integer pincode;
 	String houseNo;//Flat Number
@@ -22,5 +22,4 @@ public class AddressEntity {
 	String state;
 	String landmark;
 	String postOffice;
-	
 }
