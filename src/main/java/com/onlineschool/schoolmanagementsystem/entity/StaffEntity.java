@@ -15,7 +15,7 @@ import lombok.Data;
 public class StaffEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	Integer id;
 	String name;
 	String email;
 	String phone;

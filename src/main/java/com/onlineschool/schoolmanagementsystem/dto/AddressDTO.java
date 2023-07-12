@@ -9,7 +9,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class AddressDTO {
-	Long addressId;
+	Integer addressId;
 	Integer pincode;
 	String houseNo;//Flat Number
 	String locality;

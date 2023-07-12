@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.onlineschool.schoolmanagementsystem.dto.StudentDTO;
 import com.onlineschool.schoolmanagementsystem.entity.StudentEntity;
 
-public interface StudentRepository extends CrudRepository<StudentEntity, Long>{
+public interface StudentRepository extends CrudRepository<StudentEntity, Integer>{
 	Optional<StudentEntity> findByEmail(String email);
+	
 }

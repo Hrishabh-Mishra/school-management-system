@@ -17,7 +17,7 @@ public class StudentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	Integer id;
 	String name;
 	String standard;
 	String section;
@@ -25,7 +25,9 @@ public class StudentEntity {
 	String feesStatus;
 	//AddressEntity address;
 	//String address;
-	Long addressId;
+	Integer addressId;
+	Integer parentId1;
+	Integer parentId2;
 	String email;
 	String phone;
 	Date admissionDate;

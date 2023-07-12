@@ -11,7 +11,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class StaffDTO {
-	long id;
+	Integer id;
 	String name;
 	String email;
 	String phone;

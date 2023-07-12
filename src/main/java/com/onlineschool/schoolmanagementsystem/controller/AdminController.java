@@ -47,7 +47,24 @@ public class AdminController {
 		}
 		return response;
 	}
-		
+	
+	@PatchMapping("student/updateDetails")
+	public ResponseEntity<StudentDTO> updateDetails(@RequestBody StudentDTO studentDTO){
+		ResponseEntity<StudentDTO> response;
+		if(studentDTO.getId()!=null) {
+			studentDTO = studentService.updateDetails(studentDTO);
+			response = new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
+		}else {
+			response = new ResponseEntity<StudentDTO>(HttpStatus.BAD_REQUEST);
+		}
+		return response;
+	}
+	
+	
+	
+	
+	
+	
 	@GetMapping("student/fetchAllStudentDetails")
 	public ResponseEntity<List<StudentDTO>> fetchAllStudentDetails(){
 		return new ResponseEntity<>(studentService.fetchAllStudentDetails(), HttpStatus.OK);

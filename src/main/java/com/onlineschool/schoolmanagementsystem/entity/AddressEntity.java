@@ -13,7 +13,7 @@ import lombok.Data;
 public class AddressEntity {
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
-	Long addressId;
+	Integer addressId;
 	Integer pincode;
 	String houseNo;//Flat Number
 	String locality;

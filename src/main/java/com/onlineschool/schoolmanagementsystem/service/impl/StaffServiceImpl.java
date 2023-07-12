@@ -36,7 +36,7 @@ public class StaffServiceImpl implements AdminStaffService{
 		return null;
 	}
 	@Override
-	public StaffDTO fetchDetails(Long dtoObject) {
+	public StaffDTO fetchDetails(Integer dtoObject) {
 		// TODO Auto-generated method stub
 		return null;
 	}

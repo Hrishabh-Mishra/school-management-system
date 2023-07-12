@@ -1,29 +1,23 @@
 package com.onlineschool.schoolmanagementsystem.dto;
 
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.onlineschool.schoolmanagementsystem.entity.AddressEntity;
 
+import jakarta.persistence.Id;
 import lombok.Data;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
-public class StudentDTO {
-	Integer id;	
+public class ParentDTO {
+	Integer parentId;
 	String name;
-	String standard;
-	String section;
 	String password;
-	String feesStatus;
-	AddressDTO address;
-	//String address;
+	String relation; //TODO make it enum - Father/Mother/Guardian
 	String email;
 	String phone;
-	ParentDTO parent1;
-	ParentDTO parent2;
-	Date admissionDate;
-	Date schoolLeavingDay;
-	
+	String profession;
+	AddressDTO address;
 }
