@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.onlineschool.schoolmanagementsystem.dto.StaffDTO;
 import com.onlineschool.schoolmanagementsystem.entity.StaffEntity;
 
 public interface StaffRepository extends CrudRepository<StaffEntity, Long>{

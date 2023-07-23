@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,7 +27,9 @@ public class StudentEntity {
 	String feesStatus;
 	//AddressEntity address;
 	//String address;
-	Integer addressId;
+	@OneToOne
+	@JoinColumn(name="Address")
+	AddressEntity addressId;
 	Integer parentId1;
 	Integer parentId2;
 	String email;

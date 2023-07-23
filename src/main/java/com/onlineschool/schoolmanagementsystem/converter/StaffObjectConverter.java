@@ -16,7 +16,8 @@ public class StaffObjectConverter {
 		se.setSalaryAmount(sdto.getSalaryAmount());
 		se.setSalaryStatus(sdto.getSalaryStatus());
 		se.setStaffType(sdto.getStaffType());
-		se.setAddress(sdto.getAddress());
+		//todo:  handle
+		//se.setAddress(sdto.getAddress());
 		se.setClassTeacher(sdto.getClassTeacher());
 		se.setJoiningDate(sdto.getJoiningDate());
 		return se;

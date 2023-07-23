@@ -75,30 +75,11 @@ public class StudentServiceImpl implements  AdminStudentService{
 			int parent1AddressId = random.nextInt(Integer.MAX_VALUE);
 			int parent2AddressId = parent1AddressId+1;
 			
-			studentEntity.setAddressId(randomAddressId);
-			studentEntity.setParentId1(randomParentId1);
-			studentEntity.setParentId2(randomParentId2);
-			studentEntity = studentRepository.save(studentEntity);
-			
-			
 			AddressEntity studentAddressEntity = addressConverter.addressDTOToEntityConverter(studentDTO.getAddress());
 			studentAddressEntity.setAddressId(randomAddressId);
 			
-			
-			studentAddressEntity = addressRepositry.save(studentAddressEntity);
-			//addressRepositry.save(studentAddressEntity);
 			ParentDTO parent1 = studentDTO.getParent1();
 			ParentDTO parent2 = studentDTO.getParent2();
-			ParentEntity parent1Entity = parentConvertor.parentDTOtoEntityConverter(parent1);
-			parent1Entity.setParentId(randomParentId1);
-			parent1Entity.setAddressId(parent1AddressId);
-			parentRepositry.save(parent1Entity);
-			
-			ParentEntity parent2Entity = parentConvertor.parentDTOtoEntityConverter(parent2);
-			parent2Entity.setParentId(randomParentId2);
-			parent2Entity.setAddressId(parent2AddressId);
-			
-			parentRepositry.save(parent2Entity);
 			
 			AddressEntity parent1AddressEntity = addressConverter.addressDTOToEntityConverter(parent1.getAddress());
 			parent1AddressEntity.setAddressId(parent1AddressId);
@@ -106,10 +87,27 @@ public class StudentServiceImpl implements  AdminStudentService{
 			AddressEntity parent2AddressEntity = addressConverter.addressDTOToEntityConverter(parent2.getAddress());
 			parent2AddressEntity.setAddressId(parent2AddressId);
 			
-
 			List<AddressEntity> addressList = Arrays.asList(studentAddressEntity,parent1AddressEntity,parent2AddressEntity);
 			addressRepositry.saveAll(addressList);
 			
+			studentAddressEntity = addressRepositry.save(studentAddressEntity);
+			studentEntity.setAddressId(studentAddressEntity);
+					
+			studentEntity.setParentId1(randomParentId1);
+			studentEntity.setParentId2(randomParentId2);
+			studentEntity = studentRepository.save(studentEntity);
+					
+			
+			ParentEntity parent1Entity = parentConvertor.parentDTOtoEntityConverter(parent1);
+			parent1Entity.setParentId(randomParentId1);
+			parent1Entity.setAddressId(parent1AddressEntity);
+			parentRepositry.save(parent1Entity);
+		
+			ParentEntity parent2Entity = parentConvertor.parentDTOtoEntityConverter(parent2);
+			parent2Entity.setParentId(randomParentId2);
+			parent2Entity.setAddressId(parent2AddressEntity);
+			parentRepositry.save(parent2Entity);
+		
 			studentDTO = studentConverter.studentEntitytoDTOConverter(studentEntity);
 			return studentDTO;
 		}
@@ -122,9 +120,25 @@ public class StudentServiceImpl implements  AdminStudentService{
 		Optional<StudentEntity> studentEntityOp = studentRepository.findById(studentDTO.getId());
 		if(studentEntityOp.isPresent()) {
 			StudentEntity studentEntity = studentEntityOp.get();
+			
 			if(studentDTO.getStandard()!=null) {
 				studentEntity.setStandard(studentDTO.getStandard());
 			}
+			
+			if(studentDTO.getAddress()!=null) {
+				AddressEntity newAddressEntity = addressConverter.addressDTOToEntityConverter(studentDTO.getAddress());
+				AddressEntity oldAddressEntity = studentEntity.getAddressId();
+
+				Random random = new Random();
+				int randomAddressId = random.nextInt(Integer.MAX_VALUE);
+				newAddressEntity.setAddressId(randomAddressId);
+				addressRepositry.save(newAddressEntity);
+				studentEntity.setAddressId(newAddressEntity);			
+				
+				//deleteing previous address entity
+				addressRepositry.delete(oldAddressEntity);
+			}
+			
 			if(studentDTO.getFeesStatus()!=null) {
 				studentEntity.setFeesStatus(studentDTO.getFeesStatus());
 			}

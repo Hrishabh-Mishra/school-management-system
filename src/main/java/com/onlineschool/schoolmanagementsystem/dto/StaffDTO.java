@@ -16,7 +16,7 @@ public class StaffDTO {
 	String email;
 	String phone;
 	String password;
-	String address;
+	AddressDTO address;
 	String salaryStatus;
 	String salaryAmount;
 	String staffType;
